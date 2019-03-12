@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer'
+import Router from './Router'
 
-class App extends Component {
+class App extends Component{
+  state={
+    use:{},
+    auth:{}
+  } 
+
+catchForGlobalState= (res) =>{
+  let {user} = res.data
+  this.setState({user, logged: true})
+}
   render() {
+    let {user} = this.state
+    let {logged} = this.state
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <Navbar isLogged = {logged} />
+      <Router user = {user} catch= {this.catchForGlobalState}/>
+      <Footer/>
       </div>
     );
   }
 }
+
 
 export default App;

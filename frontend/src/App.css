@@ -31,3 +31,75 @@
     transform: rotate(360deg);
   }
 }
+
+a{
+  text-decoration: none;
+}
+
+/*Footer*/
+
+.gral{
+  display: flex;
+  height: 30vh;
+  width: 100vw;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  background-color: #0d1a27;
+}
+
+.Red-cont{
+  display: flex;
+  height: 10vh;
+  width: 70vw;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ant-layout-footer {
+  background-color:  #0d1a27 ;
+}
+
+/*Home*/
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 160px;
+  width: 100vw;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+.img-carousel{
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 5px;
+  margin: 0px;
+  opacity: .5;
+}
+
+.img-ongs{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  
+}
+ /*////////////////////*/
+
+ /*Login*/
+
+.login-form{
+  display: flex;
+  margin: 500px;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+}

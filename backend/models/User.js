@@ -2,7 +2,7 @@ let mongoose = require ('mongoose')
 let Schema = mongoose.Schema 
 let passportLocalMongoose = require('passport-local-mongoose')
 
-let UserSchema = new Schema({
+let userSchema = new Schema({
     username: {
         type: String,
         required: true
@@ -39,6 +39,6 @@ let UserSchema = new Schema({
     },
 },{timestamps:true})
 
-UserSchema.plugin(passportLocalMongoose,{username:"email"})
+userSchema.plugin(passportLocalMongoose,{usernameField:"email"})
 
-module.exports = mongoose.model('User', UserSchema)
+module.exports = mongoose.model('User', userSchema)
