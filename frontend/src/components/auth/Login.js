@@ -21,7 +21,7 @@ class NormalLoginForm extends Component {
 
   sendToServer = (e) =>{
     e.preventDefault()
-      let url= "http://localhost:3000/login"
+      let url= `${process.env.REACT_APP_API_URL}/login`
       let {auth} = this.state
       console.log(auth)
       axios.post(url, auth, {withCredentials: true})

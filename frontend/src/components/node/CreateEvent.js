@@ -53,7 +53,7 @@ export class CreateEvent extends Component {
     console.log(this.state.user)
     e.preventDefault()
     let { newEvent } = this.state
-    let url = "http://localhost:3000/createEvent"
+    let url = `${process.env.REACT_APP_API_URL}/createEvent`
     axios.post(url, newEvent, { withCredentials: true })
       .then(res => {
         console.log(res)

@@ -31,7 +31,7 @@ export default class Signup extends Component {
 
     sendToServer = (e) =>{
         e.preventDefault()
-        let url = "http://localhost:3000/signup"
+        let url = `${process.env.REACT_APP_API_URL}/signup`
         let {user} = this.state
         axios.post(url, user)
         .then(data =>{
