@@ -21,7 +21,19 @@ let causeSchema = new Schema ({
     rfc: {
         type: String,
         required: true
-    }
+    },
+    eventsForTheCause: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Event'
+        }
+    ],
+    sponsors: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]
 })
 
 

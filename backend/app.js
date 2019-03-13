@@ -8,10 +8,10 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
-const session = require ('express-session');
-const passport = require ('./helpers/passport');
-const MongoStore = require ('connect-mongo')(session);
-const cors = require ('cors');
+const session      = require('express-session')
+const passport     = require('./helpers/passport')
+const MongoStore   = require('connect-mongo')(session)
+const cors         = require('cors')
 
 
 mongoose
@@ -28,12 +28,11 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 
-//Cors config
+//cors config
 app.use(cors({
-  origin:true,
-  credentials:true
+  origin: true,
+  credentials: true
 }))
-
 
 // Middleware Setup
 app.use(logger('dev'));
@@ -57,14 +56,14 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 //session config
 app.use(session({
-  secret:process.env.SECRET,
+  secret: process.env.SECRET,
   resave: false,
   httpOnly: true,
   saveUninitialized: true,
-  cookie: {httpOnly:true, maxAge: 2419200000},
+  cookie: {httpOnly: true, maxAge: 2419200000},
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
-    ttl: 24 * 60 * 60 
+    ttl: 24 * 60 * 60
   })
 }))
 
@@ -76,12 +75,12 @@ app.use(passport.session())
 app.locals.title = 'Express - Generated with IronGenerator';
 
 
-
-
 const index = require('./routes/index');
 const auth = require ('./routes/auth');
+const interaction = require('./routes/interaction');
 app.use('/', index);
 app.use ('/', auth);
+app.use('/', interaction);
 
 
 module.exports = app;

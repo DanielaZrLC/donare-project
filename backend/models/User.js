@@ -13,30 +13,35 @@ let userSchema = new Schema({
     },
     profilePic: {
         type: String,
-        default: 'https://static.thenounproject.com/png/17241-200.png',
+        default: 'https://images.vexels.com/media/users/3/137047/isolated/preview/5831a17a290077c646a48c4db78a81bb-user-profile-blue-icon-by-vexels.png',
     },
     role: {
         type: String,
         admin: ['guest', 'admin','ong'],
         default : 'guest'
     },
-    causes:{
-        adoptedCauses:[
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Cause"
-            }
-        ],
-        payedCauses: [
-            {
-                type: Schema.Types.ObjectId,
-                ref:"Cause"
-            }
-        ],
-    },
+    eventsCreated:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Event"
+        }
+    ],
+    eventsSupported: [
+        {
+            type: Schema.Types.ObjectId,
+            ref:"Event"
+        }
+    ],
+    causesSupported: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Cause'
+        }
+    ]
+    ,
     rfc: {
         type: String,
-    },
+    } 
 },{timestamps:true})
 
 userSchema.plugin(passportLocalMongoose,{usernameField:"email"})

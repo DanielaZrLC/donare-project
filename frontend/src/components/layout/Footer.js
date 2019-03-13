@@ -10,7 +10,7 @@ const {Footer} = Layout
 export default function footer() {
   return (
     <div className="gral">
-     <Footer style={{ textAlign: 'center', backgorund: 'none'}}>
+     <Footer style={{ textAlign: 'center',}}>
      
         <p><a href="/">Acerca de nosotros</a></p>
         <p><a href="/">Contacto</a></p>

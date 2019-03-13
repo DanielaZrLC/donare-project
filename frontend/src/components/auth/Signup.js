@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import 'antd/dist/antd.css'
-import {
-  Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,
-} from 'antd';
+import {Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,} from 'antd';
+
 
 const { Option } = Select;
+
 const AutoCompleteOption = AutoComplete.Option
 const formItemLayout = {
   labelCol: {
@@ -46,26 +46,46 @@ export default class Signup extends Component {
     }
 
   render() {
-    const { getFieldDecorator } = this.props.form;
+    // const { getFieldDecorator } = this.props.form;
       const errors = this.state
     return (
       <div>
-      <Form {...formItemLayout} onSubmit={this.sendToServer}>
-        <Form.Item
-          label="E-mail"
-        >
-          {getFieldDecorator('email', {
+       <h1>Regístrate:</h1>
+      {/* <Form {...formItemLayout} onSubmit={this.sendToServer}>
+        <Form.Item label="E-mail"> {getFieldDecorator('email', {
             rules: [{
               type: 'email', message: 'The input is not valid E-mail!',
             }, {
               required: true, message: 'Please input your E-mail!',
+              }],
+              })(
+                <Input />
+                )}
+            </Form.Item>
+
+        <Form.Item label="Password"> {getFieldDecorator('password', {
+            rules: [{
+              required: true, message: 'Please input your password!',
+            }, {
+              validator: this.validateToNextPassword,
             }],
           })(
-            <Input />
-            )}
+            <Input type="password" />
+          )}
         </Form.Item>
+        
+        <Form.Item label="Confirm Password"> {getFieldDecorator('confirm', {
+            rules: [{
+              required: true, message: 'Please confirm your password!',
+            }, {
+              validator: this.compareToFirstPassword,
+            }],
+          })(
+            <Input type="password" onBlur={this.handleConfirmBlur} />
+          )}
+        </Form.Item> */}
         <form onSubmit={this.sendToServer}>
-        <h1>Regístrate:</h1>
+       
             <label>Nombre de usuario</label>
             <input onChange= {this.handleChange} type="text" name="username"/>
             <label>Email</label>
@@ -80,7 +100,7 @@ export default class Signup extends Component {
             <p style={{color:"red"}}>{errors.password}</p>
             <button type="submit">Enviar</button>
         </form>
-        </Form>
+        {/* </Form> */}
       </div>
     )
   }

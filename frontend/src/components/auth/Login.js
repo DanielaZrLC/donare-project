@@ -24,9 +24,10 @@ class NormalLoginForm extends Component {
       let url= "http://localhost:3000/login"
       let {auth} = this.state
       console.log(auth)
-      axios.post(url, auth, {WithCredentials: true})
+      axios.post(url, auth, {withCredentials: true})
         .then(data =>{
           console.log('The data was send', data)
+          this.props.catched(data)
           this.props.history.push('/profile')
         })
         .catch(e => console.log(e))
@@ -35,7 +36,6 @@ class NormalLoginForm extends Component {
   render () {
     const { getFieldDecorator } = this.props.form
     return(
-    <div>
     <Form onSubmit={this.sendToServer} className="login-form">
     <PageHeader title="Inicia sesión" />
     <Form.Item>
@@ -59,7 +59,6 @@ class NormalLoginForm extends Component {
           <NavLink to="/signup">¿Aún no estás registrado?</NavLink>
         </Form.Item>
     </Form>
-    </div>
  )}
 }
 

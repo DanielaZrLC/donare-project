@@ -6,7 +6,7 @@ import Router from './Router'
 
 class App extends Component{
   state={
-    use:{},
+    user:{},
     auth:{}
   } 
 
@@ -20,7 +20,7 @@ catchForGlobalState= (res) =>{
     return (
       <div className="App">
       <Navbar isLogged = {logged} />
-      <Router user = {user} catch= {this.catchForGlobalState}/>
+      <Router user = {user} catched= {this.catchForGlobalState}/>
       <Footer/>
       </div>
     );
