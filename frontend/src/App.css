@@ -105,22 +105,6 @@ a{
   background-color: rgba(225, 224, 224, 0.53);
   color: black;
 }
- /*////////////////////*/
-
- /*Login*/
-
-.login-form{
-  background-image: url('https://media.mnn.com/assets/images/2014/04/bwelephantzebra.jpg.653x0_q80_crop-smart.jpg');
-  background-size: cover;
-  opacity: 0.6; 
-  display: flex;
-  height: 530px;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
 
 .cards-icon{
   display:flex;
@@ -138,6 +122,44 @@ a{
 }
 
 
+ /*/////////***Login///////////*/
+
+
+.login-form{
+  background-image: url('https://images.pexels.com/photos/48794/boy-walking-teddy-bear-child-48794.jpeg?cs=srgb&dl=black-and-white-child-cute-48794.jpg&fm=jpg');
+  background-size: cover;
+  opacity: 0.6; 
+  display: flex;
+  height: 530px;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.back-log{
+  background-color: rgba(27, 27, 27, 0.76);
+  padding: 50px;
+}
+
+/*///////////Signup/////////*/
+.signup-form{
+  background-image: url('https://images.pexels.com/photos/48794/boy-walking-teddy-bear-child-48794.jpeg?cs=srgb&dl=black-and-white-child-cute-48794.jpg&fm=jpg');
+  background-size: cover;
+  opacity: 0.6; 
+  display: flex;
+  height: 530px;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back-sign{
+  background-color: rgba(27, 27, 27, 0.76);
+  padding: 50px;
+}
+
+
 /*////////Perfil/////////*/
 
 .profile{
@@ -148,4 +170,18 @@ a{
   height: 510px;
   width: 50%;
 
+}
+
+
+/*New event*/
+
+.newEventform{
+  display: flex;
+  height: 300px;
+
+  background-color: rgb(rgb(168, 168, 168));
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }

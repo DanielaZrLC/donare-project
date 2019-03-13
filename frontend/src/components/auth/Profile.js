@@ -4,6 +4,7 @@ import { Button } from 'antd';
 
 export default function Profile(props) {
     let {user} = props
+    // let {newprofilePic} = props.profilePic
     // let {newEvent} = props.users
 
   // let allMyEvents = () => newEvent.push(events => {

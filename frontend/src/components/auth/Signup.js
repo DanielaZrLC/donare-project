@@ -1,30 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import 'antd/dist/antd.css'
-import {Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,} from 'antd';
+import {Form, Input, Icon,  Button, } from 'antd';
+import {NavLink} from 'react-router-dom'
 
-
-const { Option } = Select;
-
-const AutoCompleteOption = AutoComplete.Option
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 8 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 16 },
-  },
-};
 
 
 export default class Signup extends Component {
     state={
         user: {},
         auth: {},
+        profilePic:{},
         errors:{}
     }
+
     handleChange = (e) =>{
         let {user, errors} = this.state
         user[e.target.name] = e.target.value 
@@ -32,6 +21,12 @@ export default class Signup extends Component {
         else{
             this.setState({errors, user})
         }
+    }
+
+     handleImageChange = (e) => {
+      let { profilePic } = this.state
+      profilePic = e.target.files[0] 
+      this.setState({profilePic})
     }
 
     sendToServer = (e) =>{
@@ -45,63 +40,66 @@ export default class Signup extends Component {
         })
     }
 
+    // sendToServer = (e) => {
+    //   e.preventDefault()
+    //   let url= "http://localhost:3000/signup"
+    //   let {profilePhoto, newUser} = this.state
+    //   const formData = new FormData()		
+    //   for(let key in newUser){
+    //     formData.append(key, newUser[key])
+    //   }		
+    //   formData.append("picture", profilePhoto)
+    //   let serviceUpload = axios.create({url, withCredentials: true})
+    //   return serviceUpload.post(url, formData, {
+    //     headers: {
+    //       'Content-type': 'multipart/form-data',
+    //     }
+    //   })
+    //     .then(res => {
+    //       this.props.history.push('/profile')
+    //       console.log(res)
+    //     })
+    //     .catch(e => console.log(e))
+    // }
+   
+
   render() {
-    // const { getFieldDecorator } = this.props.form;
-      const errors = this.state
     return (
-      <div>
-       <h1>Regístrate:</h1>
-      {/* <Form {...formItemLayout} onSubmit={this.sendToServer}>
-        <Form.Item label="E-mail"> {getFieldDecorator('email', {
-            rules: [{
-              type: 'email', message: 'The input is not valid E-mail!',
-            }, {
-              required: true, message: 'Please input your E-mail!',
-              }],
-              })(
-                <Input />
-                )}
-            </Form.Item>
-
-        <Form.Item label="Password"> {getFieldDecorator('password', {
-            rules: [{
-              required: true, message: 'Please input your password!',
-            }, {
-              validator: this.validateToNextPassword,
-            }],
-          })(
-            <Input type="password" />
-          )}
+      <Form onSubmit={this.sendToServer} className="signup-form">
+      <div className="back-sign">
+       <h2 style={{backgroundColor: "rgba(20, 20, 20, 0.76)", color:"white", height:"50px"}} title="Regístrate">Regístrate:</h2>
+       <Form.Item>
+            <Input onChange= {this.handleChange} name="email" prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Ingresa tu correo" />
         </Form.Item>
-        
-        <Form.Item label="Confirm Password"> {getFieldDecorator('confirm', {
-            rules: [{
-              required: true, message: 'Please confirm your password!',
-            }, {
-              validator: this.compareToFirstPassword,
-            }],
-          })(
-            <Input type="password" onBlur={this.handleConfirmBlur} />
-          )}
-        </Form.Item> */}
-        <form onSubmit={this.sendToServer}>
-       
-            <label>Nombre de usuario</label>
-            <input onChange= {this.handleChange} type="text" name="username"/>
-            <label>Email</label>
-            <input onChange= {this.handleChange} type="email" name="email"/>
-            <label>Password</label>
-            <input onChange= {this.handleChange} type="password" name="password"/>
-            <label>Repite tu password</label>
-            <input onChange= {this.handleChange} type="password" name="password2"/>
-            <label>Ingresa tu RFC</label>
-            <input onChange= {this.handleChange} type="text" name="rfc"/>
+        <Form.Item>
+            <Input.Password onChange= {this.handleChange} name="password" type="password" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Ingresa contraseña" />
+        </Form.Item>
+        <Form.Item>
+            <Input.Password onChange= {this.handleChange} name="password2" type="password" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Confirma contraseña" />
+        </Form.Item>
 
-            <p style={{color:"red"}}>{errors.password}</p>
-            <button type="submit">Enviar</button>
-        </form>
-        {/* </Form> */}
-      </div>
+        <Button ghost type="submit" >
+            Enviar
+          </Button>
+          <h4>¿Ya tienes cuenta con nosotros?</h4>
+          <NavLink to ="/login">Login</NavLink>
+        </div>
+        </Form>
     )
   }
 }
+
+
+// <input type="file" onChange={this.handleImageChange} name="profilePhoto" />
+// <br />
+// <input onChange={this.handleChange} placeholder="Your phone number" name="phone" type="number" />
+// <br />
+// <input onChange={this.handleChange} placeholder="Set a password" name="password" type="password" />
+// <br />
+// <input onChange={this.handleChange} placeholder="Rewrite your password" name="password2" type="password" />
+// <p style={{ color: "red" }}>{errors.password}</p> {/*Add Toastr*/}
+// <button onClick={this.sendToServer}>Registrarse</button>
+// </div>
+// <div>
+
+//dirigir al profile una vez hecho el signup

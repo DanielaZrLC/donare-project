@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import 'antd/dist/antd.css'
-import {Form, Icon, Input, Button, PageHeader} from 'antd';
+import {Form, Icon, Input, Button } from 'antd';
 
 
 
@@ -37,7 +37,8 @@ class NormalLoginForm extends Component {
     const { getFieldDecorator } = this.props.form
     return(
     <Form onSubmit={this.sendToServer} className="login-form">
-    <PageHeader title="Inicia sesión" />
+    <div className="back-log">
+    <h2 style={{backgroundColor: "rgba(20, 20, 20, 0.76)", color:"white", height:"50px"}} title="Inicia sesión">Inicia sesión</h2>
     <Form.Item>
           {getFieldDecorator('email', {
             rules: [{ required: true, message: 'Ingresa tu email' }],
@@ -49,15 +50,16 @@ class NormalLoginForm extends Component {
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Ingresa tu contraseña' }],
           })(
-            <Input.Password onChange= {this.handleChange} name="password" prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="password" />
+            <Input.Password onChange= {this.handleChange} name="password" type="password" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="password" />
           )}
         </Form.Item>
         <Form.Item> 
-          <Button type="primary" htmlType="submit" className="btn-login">
+          <Button ghost htmlType="submit">
             Iniciar sesión
           </Button>
-          <NavLink to="/signup">¿Aún no estás registrado?</NavLink>
+          <NavLink style={{color: "white"}}to="/signup">¿Aún no estás registrado?</NavLink>
         </Form.Item>
+        </div>
     </Form>
  )}
 }
@@ -66,4 +68,3 @@ const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLogin
 export default WrappedNormalLoginForm
 
 
-//getFieldDecorator = of undefined 
