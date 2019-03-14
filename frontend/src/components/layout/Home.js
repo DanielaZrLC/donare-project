@@ -2,19 +2,22 @@ import React from 'react';
 import { Carousel } from 'antd';
 import { Card, Col, Row, Button } from 'antd';
 
+let imageSrc1 = "https://www.unicef.org/sites/default/files/styles/media_banner/public/2018-06/06_AU_UN0148747_Bluewash_WEB_0.jpg?itok=PL6mgo-h"
+let imageSrc2 = "http://www.arborday.org/trees/images/hero-planting.jpg"
+let imageSrc3 = "https://revista.weepec.com/wp-content/uploads/2017/01/refugio.jpg"
+let imageSrc4 = "http://images6.fanpop.com/image/photos/33100000/Jaguar-Wallpaper-amazon-rainforest-33125157-1920-1200.jpg"
 
 
 export default function Home() {
   return (
     <div>
-    <section className="home-s1">
-    <Carousel effect="fade">
-    <div className="img-carousel"><img src="https://www.unicef.org/sites/default/files/styles/media_banner/public/2018-06/06_AU_UN0148747_Bluewash_WEB_0.jpg?itok=PL6mgo-h" alt="children"/></div>
-    <div className="img-carousel"><img src="https://tecreview.tec.mx/wp-content/uploads/2016/10/ANTARTIDA.jpg" alt="antartida"/></div>
-    <div className="img-carousel"><img src="https://revista.weepec.com/wp-content/uploads/2017/01/refugio.jpg" alt="dogs"/></div>
-    <div className="img-carousel"><img src="https://asunow.asu.edu/sites/default/files/jaguar_bold_1170x700.jpg" alt="jaguar"/></div>
+    <section>
+    <Carousel autoplay>
+    <div className="img-carousel"><img src={imageSrc1} style={{width:"100vw", height:"50vw"}} alt="children"/></div>
+    <div className="img-carousel"><img src={imageSrc2} style={{width:"100vw", height:"50vw"}} alt="reforestación"/></div>
+    <div className="img-carousel"><img src={imageSrc3} style={{width:"100vw", height:"50vw"}} alt="dogs"/></div>
+    <div className="img-carousel"><img src={imageSrc4} style={{width:"100vw", height:"50vw"}} alt="jaguar"/></div>
   </Carousel>
-  <h3 className="frase">"Nadie que haya aliviado el peso de sus semejantes habrá fracasado en este mundo.”</h3>
     <p style={{ 'font-size': '1.5em', color: '#ECECECy'}}>Donare es un organismo que se encarga de concentrar información de diferentes ONGS de México con el fin de que se vuelva tendencia el participar activamente en causas mediante aportes económicos.</p>
     </section>
     <section className="home-s2">

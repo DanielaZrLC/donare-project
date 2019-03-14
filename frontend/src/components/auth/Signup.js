@@ -31,43 +31,39 @@ export default class Signup extends Component {
 
     sendToServer = (e) =>{
         e.preventDefault()
-        let url = `${process.env.REACT_APP_API_URL}/signup`
-        let {user} = this.state
-        axios.post(url, user)
-        .then(data =>{
-            console.log(data)
-            this.props.history.push('/login')
+        let {user, profilePic} = this.state
+        console.log(user)
+        let url = 'http://localhost:3000/signup'
+        const formData = new FormData()		
+        for(let key in user){
+            formData.append(key, user[key])
+        }
+        formData.append("picture", profilePic)
+        let serviceUpload = axios.create({url, withCredentials: true})
+        return serviceUpload.post(url, formData, {
+            headers: {
+                'Content-type': 'multipart/form-data',
+            }
         })
+        .then(res => {
+            console.log(res)
+            this.props.history.push('/login')
+            
+        })
+            .catch(e => console.log(e))
     }
-
-    // sendToServer = (e) => {
-    //   e.preventDefault()
-    //   let url= "http://localhost:3000/signup"
-    //   let {profilePhoto, newUser} = this.state
-    //   const formData = new FormData()		
-    //   for(let key in newUser){
-    //     formData.append(key, newUser[key])
-    //   }		
-    //   formData.append("picture", profilePhoto)
-    //   let serviceUpload = axios.create({url, withCredentials: true})
-    //   return serviceUpload.post(url, formData, {
-    //     headers: {
-    //       'Content-type': 'multipart/form-data',
-    //     }
-    //   })
-    //     .then(res => {
-    //       this.props.history.push('/profile')
-    //       console.log(res)
-    //     })
-    //     .catch(e => console.log(e))
-    // }
+      	
    
 
   render() {
     return (
-      <Form onSubmit={this.sendToServer} className="signup-form">
+        <div>
+      <Form  className="signup-form">
       <div className="back-sign">
-       <h2 style={{backgroundColor: "rgba(20, 20, 20, 0.76)", color:"white", height:"50px"}} title="Regístrate">Regístrate:</h2>
+       <h2 style={{backgroundColor: "rgba(20, 20, 20, 0.76)", color:"white", height:"50px"}} >Regístrate:</h2>
+       <Form.Item>
+            <Input onChange= {this.handleChange} name="username" prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Ingresa tu nombre de usuario" />
+        </Form.Item>
        <Form.Item>
             <Input onChange= {this.handleChange} name="email" prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Ingresa tu correo" />
         </Form.Item>
@@ -77,29 +73,20 @@ export default class Signup extends Component {
         <Form.Item>
             <Input.Password onChange= {this.handleChange} name="password2" type="password" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Confirma contraseña" />
         </Form.Item>
-
-        <Button ghost type="submit" >
+            <Input onChange= {this.handleImageChange} name="profilePic" type="file" prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} />
+        <Form.Item>
+            <Input onChange={this.handleChange} placeholder="Your phone number" name="phone" type="number" />
+        </Form.Item>
+        <Button onClick={this.sendToServer}>
             Enviar
           </Button>
-          <h4>¿Ya tienes cuenta con nosotros?</h4>
-          <NavLink to ="/login">Login</NavLink>
         </div>
         </Form>
+        <h4>¿Ya tienes cuenta con nosotros?</h4>
+          <NavLink to ="/login">Login</NavLink>
+          </div>
     )
   }
 }
 
-
-// <input type="file" onChange={this.handleImageChange} name="profilePhoto" />
-// <br />
-// <input onChange={this.handleChange} placeholder="Your phone number" name="phone" type="number" />
-// <br />
-// <input onChange={this.handleChange} placeholder="Set a password" name="password" type="password" />
-// <br />
-// <input onChange={this.handleChange} placeholder="Rewrite your password" name="password2" type="password" />
-// <p style={{ color: "red" }}>{errors.password}</p> {/*Add Toastr*/}
-// <button onClick={this.sendToServer}>Registrarse</button>
-// </div>
-// <div>
-
-//dirigir al profile una vez hecho el signup
+//btn onsubmit 

@@ -13,7 +13,7 @@ let eventSchema= new Schema({
     cause: {
         type: Schema.Types.ObjectId,
         ref:'Cause',
-        required: true
+        required: false
     },
     owner: {
         type: Schema.Types.ObjectId,

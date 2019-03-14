@@ -1,10 +1,13 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-import { Button } from 'antd';
+import { Button, Card,Icon, Statistic} from 'antd';
+
+
+const { Meta } = Card;
 
 export default function Profile(props) {
     let {user} = props
-    // let {newprofilePic} = props.profilePic
+    // let {profilePic} = props.profilePic
     // let {newEvent} = props.users
 
   // let allMyEvents = () => newEvent.push(events => {
@@ -30,15 +33,26 @@ export default function Profile(props) {
   // } else {
     return(
       <div className="profile">
-        <h1>Bienvenido {user.username}</h1>
-        <img src={user.profilePic} alt=""/>
-        <Button >Editar mi foto</Button>
-        <h3>Correo: {user.email}</h3>
 
+<Card
+    hoverable
+    style={{ width: 250 , margin: '10px'}}
+    cover={<img alt="" src={user.profilePic} />} > 
+    <Meta
+      title={user.username}
+      description={user.email}/>
 
-        <h4>No has generado aún eventos para apoyar alguna causa, si deseas dar de alta uno da click aquí: </h4>
+<Button >Editar mi foto</Button>
+  </Card>
+  
+  
+  
+  <div className="complemento-prof">
+
+  <Statistic style={{color: 'white'}} title="Feedback" value={1128} prefix={<Icon type="like" />} />
         <NavLink to="/createEvent"><Button>Crear evento</Button></NavLink>
         <NavLink to="/allMyEvents"><Button>Ver mis eventos</Button></NavLink>
+        </div>
         </div>
     )
   }

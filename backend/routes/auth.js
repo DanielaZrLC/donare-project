@@ -17,14 +17,15 @@ return next()
     res.status (401).json ({message: "Regístrate o haz Login"})
 }}
 
-router.post('/signup', (req,res,next) => {
-    User.register (req.body, req.body.password)
+router.post('/signup', uploadCload.single('picture'), (req,res,next) => {
+    if(req.file) req.body.profilePic = req.file.url
+    User.register(req.body, req.body.password)
         .then(user => {
             req.body.user = user.id
-            res.status(201).json (user)
+            res.status(201).json(user)
         })
         .catch(e =>{
-            req.body.err = errDict[e.name]
+            // req.body.err = errDict[e.name]
             res.json(e)
         })
 })
