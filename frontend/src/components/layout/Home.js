@@ -4,7 +4,7 @@ import { Card, Col, Row, Button } from 'antd';
 
 let imageSrc1 = "https://www.unicef.org/sites/default/files/styles/media_banner/public/2018-06/06_AU_UN0148747_Bluewash_WEB_0.jpg?itok=PL6mgo-h"
 let imageSrc2 = "http://www.arborday.org/trees/images/hero-planting.jpg"
-let imageSrc3 = "https://revista.weepec.com/wp-content/uploads/2017/01/refugio.jpg"
+let imageSrc3 = "https://expreso.press/wp-content/uploads/2017/12/albergue-de-perros.jpg"
 let imageSrc4 = "http://images6.fanpop.com/image/photos/33100000/Jaguar-Wallpaper-amazon-rainforest-33125157-1920-1200.jpg"
 
 

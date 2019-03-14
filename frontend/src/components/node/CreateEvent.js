@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import {  Button, Input, AutoComplete, Comment, Avatar, Form, List,Select} from 'antd'; //
+import {  Button, Input, AutoComplete, Comment, Form, List,Row, Col} from 'antd'; //
 import FormItem from 'antd/lib/form/FormItem';
 
 
@@ -8,7 +8,7 @@ const dataSource =['Grupo Voluntario Mexicano-Alemán', 'Fundación Jaguar Negro
 
 
 
-
+//comentarios
 const TextArea = Input.TextArea;
 const CommentList = ({ comments }) => (
   <List
@@ -27,6 +27,7 @@ const Editor = ({ onChange, onSubmit, submitting, value, }) => (
     </Form.Item>
   </div>
 );
+//comentarios
 
 
 //ongs
@@ -44,8 +45,10 @@ function Complete() {
 export class CreateEvent extends Component {
   state={
     user:{},
+    name:{},
     cause:{},
     newEvent:{},
+    profilePic: {},
     comments: [],
     submitting: false,
     value: ''
@@ -76,7 +79,6 @@ export class CreateEvent extends Component {
     if (!this.state.value) {
       return;
     }
-
     this.setState({
       submitting: true,
     });
@@ -90,8 +92,8 @@ export class CreateEvent extends Component {
         value: '',
         comments: [
           {
-            author: 'Han Solo',
-            avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+            author: 'Dany',
+            avatar: 'https://img.icons8.com/color/160/gremlin2.png',
             content: <p>{this.state.value}</p>,
           },
           ...this.state.comments,
@@ -100,9 +102,12 @@ export class CreateEvent extends Component {
     }, 1000);
   }
 
-
-
-
+  handleChange = (e) => {
+    this.setState({
+      value: e.target.value,
+    });
+  }
+ /////
 
 
   sendToServer = e => {
@@ -120,38 +125,44 @@ export class CreateEvent extends Component {
   }
 
 
-  
-  
   render() {
     const { comments, submitting, value } = this.state;
     return (
     <div className="newEventform">
-      <FormItem>
+     
+<Row style={{marginTop: '50px', width:'80%'}}>
+    <Col xs={{ span: 5, offset: 1 }} lg={{ span: 10, offset: 2 }}>
+    <FormItem>
          <Input type="text" name="name" placeholder="Nombre de mi evento" onChange ={this.handleChange}/>
       </FormItem>
-
-
-      <label>Tipo de evento</label>
-    
-    
-    
-      
-
-    <label>Fecha del evento: </label>
+  
+    <label style={{color: 'white'}} >Fecha del evento: </label>
      <FormItem>
         <Input type="date" name="date" onChange ={this.handleChange}/>
      </FormItem>
+    </Col>
 
 
-    <label>Nombre de la ONG</label>
+    <Col xs={{ span: 5, offset: 1 }} lg={{ span: 10, offset: 2 }}>
+    <label style={{color: 'white'}} >Nombre de la ONG</label>
     <Complete />
 
         {comments.length > 0 && <CommentList comments={comments} />}
         <Comment
           content={(
-          <Editor onChange={this.handleChange} onSubmit={this.handleSubmit} submitting={submitting} value={value}/> )} />
+            <Editor
+              onChange={this.handleChange}
+              onSubmit={this.handleSubmit}
+              submitting={submitting}
+              value={value}
+            />
+          )}
+        />
+        <Button type="primary" onClick={this.sendToServer} htmlType="submit" loading={submitting}>Crear evento</Button>
+        </Col>
+  </Row>,
 
-   <Button onClick={this.sendToServer}>Crear evento</Button>
+   
   </div>
 
     )

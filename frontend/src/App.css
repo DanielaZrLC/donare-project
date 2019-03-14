@@ -165,23 +165,32 @@ a{
 /*////////Perfil/////////*/
 
 .profile{
-  background-color: rgba(56, 75, 80, 0.76);
+  background-image: url('https://images.unsplash.com/photo-1505243542579-da5adfe8338f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: .85;
   padding: 50px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  height: 510px;
+  height: 68vh;
   width: 100%;
-
 }
 .complemento-prof{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   height: 50vh;
   width: 30vw;
+}
+
+.cards-news{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 300px;
 }
 
 
@@ -190,12 +199,16 @@ a{
 .newEventform{
   display: flex;
   height: 68vh;
-  background-color: rgb(116, 116, 116);
-  flex-wrap: wrap;
-  justify-content: center;
+  background-image: url('https://www.biplaza.es/wp-content/uploads/2018/06/tortuga.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: .95; 
+  flex-wrap: nowrap;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
 }
+
 
 /*Events listt*/
 .event-card{
